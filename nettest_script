@@ -21,12 +21,12 @@ while :;do
   #attempt to get some GEO information back
   #https is not available on the free service
   #mygeo=`curl -s "https://ip-api.com"`
-  mygeo=`curl "http://ip-api.com/json"`
+  mygeo=$(curl "http://ip-api.com/json")
   #human readable version instead of json
   #mygeo=`curl "http://ip-api.com"`
   mycountry=$(curl "http://ip-api.com/json" | jq '.countryCode')
-  myregion=`curl "http://ip-api.com/json"` | jq '.region'
-  mycity=`curl "http://ip-api.com/json"` | jq '.city'
+  myregion=$(curl "http://ip-api.com/json" | jq '.region')
+  mycity=$(curl "http://ip-api.com/json" | jq '.city')
   echo "[$(TZ=${2} date +%D" "%H:%M" "%Z)] Current Geo - ${mygeo}"
   #echo "[$(TZ=${2} date +%D" "%H:%M" "%Z)] Current Geo - ${mygeo}" >> ${logdest}
   echo "[$(TZ=${2} date +%D" "%H:%M" "%Z)] Current Geo - ${mycountry} - ${myregion} - ${mycity}" >> ${logdest}

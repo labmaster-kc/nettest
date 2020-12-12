@@ -1,0 +1,20 @@
+#!/bin/bash
+
+logdest="/tmp/nettest-log"
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+#var 6-PUID and 7-PGID, if needed in the future
+#touch ${logdest} && chown ${6}:${7} ${logdest}
+touch ${logdest}
+
+echo -e "[$(TZ=${2} date +%D" "%H:%M" "%Z)] Monitoring network records, checks every ${1} seconds\nCurrent external IP is $(curl -s "https://api.ipify.org")"
+echo -e "[$(TZ=${2} date +%D" "%H:%M" "%Z)] Monitoring network records, checks every ${1} seconds\nCurrent external IP is $(curl -s "https://api.ipify.org")" >> ${logdest}
+
+while :;do
+  sleep ${1}
+  #Random sleep so multiple site updates doesn't cause API to timeout
+  sleep $((RANDOM % 15 + 1))
+  myip=`curl -s "https://api.ipify.org"`
+  echo "[$(TZ=${2} date +%D" "%H:%M" "%Z)] Current external IP - ${myip}"
+  echo "[$(TZ=${2} date +%D" "%H:%M" "%Z)] Current external IP - ${myip}" >> ${logdest}
+done

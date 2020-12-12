@@ -17,4 +17,9 @@ while :;do
   myip=`curl -s "https://api.ipify.org"`
   echo "[$(TZ=${2} date +%D" "%H:%M" "%Z)] Current external IP - ${myip}"
   echo "[$(TZ=${2} date +%D" "%H:%M" "%Z)] Current external IP - ${myip}" >> ${logdest}
+  
+  #attempt to get some GEO information back
+  mygeo=`curl -s "https://ip-api.com"`
+  echo "[$(TZ=${2} date +%D" "%H:%M" "%Z)] Current Geo - ${mygeo}"
+  echo "[$(TZ=${2} date +%D" "%H:%M" "%Z)] Current Geo - ${mygeo}" >> ${logdest}
 done

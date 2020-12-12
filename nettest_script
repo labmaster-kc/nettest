@@ -24,7 +24,7 @@ while :;do
   mygeo=`curl "http://ip-api.com/json"`
   #human readable version instead of json
   #mygeo=`curl "http://ip-api.com"`
-  mycountry=`curl "http://ip-api.com/json"` | jq '.countryCode'
+  mycountry=$(curl "http://ip-api.com/json" | jq '.countryCode')
   myregion=`curl "http://ip-api.com/json"` | jq '.region'
   mycity=`curl "http://ip-api.com/json"` | jq '.city'
   echo "[$(TZ=${2} date +%D" "%H:%M" "%Z)] Current Geo - ${mygeo}"

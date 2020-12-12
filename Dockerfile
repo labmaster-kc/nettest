@@ -4,6 +4,9 @@ FROM alpine:latest
 # Install curl
 RUN apk add --no-cache curl bash tzdata
 
+# Install jq, a json parser
+RUN apk add jq
+
 # Set version label
 LABEL build_version="nettest, Version: 1.0.00, Build-date: 2020.12.11"
 LABEL maintainer=labmaster-kc

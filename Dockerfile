@@ -15,8 +15,8 @@ COPY nettest_script /opt/
 RUN chmod +rxxx /opt/nettest_script
 
 # Set default docker variables
-ENV NET_CHECK=${DNS_CHECK:-900}
-ENV TIME_ZONE=${TIME_ZONE:-America/New_York}
+ENV NET_CHECK=${NET_CHECK:-900}
+ENV TZ=${TZ:-America/New_York}
 
 ENV DOMAIN=${DOMAIN:-NULL}
 ENV SUB_DOMAIN=${SUB_DOMAIN:-@}
@@ -26,4 +26,4 @@ ENV PUID=${PUID:-0}
 ENV PGID=${PGID:-0}
 
 #CMD /opt/nettest_script ${DOMAIN} ${SUB_DOMAIN} ${API_KEY} ${DNS_CHECK} ${TIME_ZONE} ${PUID} ${PGID} ${API_SECRET}
-CMD /opt/nettest_script ${NET_CHECK} ${TIME_ZONE}
+CMD /opt/nettest_script ${NET_CHECK} ${TZ}

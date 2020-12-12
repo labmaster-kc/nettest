@@ -21,7 +21,9 @@ while :;do
   #attempt to get some GEO information back
   #https is not available on the free service
   #mygeo=`curl -s "https://ip-api.com"`
-  mygeo=`curl "http://ip-api.com"`
+  mygeo=`curl "http://ip-api.com/json"`
+  #human readable version instead of json
+  #mygeo=`curl "http://ip-api.com"`
   mycountry=${mygeo} | jq '.countryCode'
   myregion=${mygeo} | jq '.region'
   mycity=${mygeo} | jq '.city'

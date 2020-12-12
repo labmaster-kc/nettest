@@ -22,6 +22,10 @@ while :;do
   #https is not available on the free service
   #mygeo=`curl -s "https://ip-api.com"`
   mygeo=`curl "http://ip-api.com"`
+  mycountry=${mygeo} | jq '.countryCode'
+  myregion=${mygeo} | jq '.region'
+  mycity=${mygeo} | jq '.city'
   echo "[$(TZ=${2} date +%D" "%H:%M" "%Z)] Current Geo - ${mygeo}"
-  echo "[$(TZ=${2} date +%D" "%H:%M" "%Z)] Current Geo - ${mygeo}" >> ${logdest}
+  #echo "[$(TZ=${2} date +%D" "%H:%M" "%Z)] Current Geo - ${mygeo}" >> ${logdest}
+  echo "[$(TZ=${2} date +%D" "%H:%M" "%Z)] Current Geo - ${mycountry} - ${myregion} - ${mycity}" >> ${logdest}
 done

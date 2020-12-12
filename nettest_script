@@ -19,7 +19,9 @@ while :;do
   echo "[$(TZ=${2} date +%D" "%H:%M" "%Z)] Current external IP - ${myip}" >> ${logdest}
   
   #attempt to get some GEO information back
-  mygeo=`curl -s "https://ip-api.com"`
+  #https is not available on the free service
+  #mygeo=`curl -s "https://ip-api.com"`
+  mygeo=`curl "http://ip-api.com"`
   echo "[$(TZ=${2} date +%D" "%H:%M" "%Z)] Current Geo - ${mygeo}"
   echo "[$(TZ=${2} date +%D" "%H:%M" "%Z)] Current Geo - ${mygeo}" >> ${logdest}
 done
